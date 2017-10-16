@@ -6,12 +6,12 @@ import ItemInScroll from './ItemInScroll';
 
 export const scrollRangeForAnimation = 100;
 
-const HeaderPlaceholder = <View style={{flex: 0, height: 172, width: '100%'}} />;
+const HeaderPlaceholder = <View style={{flex: 0, height: 200, width: '100%'}} />;
 
 const Demo = ({scrollY, animationRange}) =>   
       <View style={styles.container}>                              
         <Animated.ScrollView            
-            style={{flex:1, zIndex: 1}}
+            style={styles.scrollView}
             onScroll={Animated.event(
                 [
                     {
@@ -36,14 +36,17 @@ const Demo = ({scrollY, animationRange}) =>
             <ItemInScroll numberOfItem={10} />
             <ItemInScroll numberOfItem={11} />
         </Animated.ScrollView>         
-        <AnimatedHeader animationRange={animationRange}/>
-        {/* <View style={{position: 'absolute', flex: 0, zIndex: 10, height:300, width:300, backgroundColor: 'green'}}/> */}
+        <AnimatedHeader animationRange={animationRange}/>        
       </View>    
 
 const styles = StyleSheet.create({
   container: {
     flex: 1
   },
+  scrollView: {
+    flex:1, 
+    zIndex: 1
+  }
 });
 
 const enhance = compose(

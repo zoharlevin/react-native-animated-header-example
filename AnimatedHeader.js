@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Animated } from 'react-native';
+import AnimatedText from './AnimatedText';
+import AnimatedImage from './AnimatedImage';
 
 const HeaderBackground = ({animationRange}) => {
     const animateHeader = {
@@ -7,7 +9,7 @@ const HeaderBackground = ({animationRange}) => {
             {
                 translateY: animationRange.interpolate({
                     inputRange: [0, 1],
-                    outputRange: [0, -101],
+                    outputRange: [0, -100],
                 }),
             },
         ],
@@ -18,25 +20,32 @@ const HeaderBackground = ({animationRange}) => {
 
 
 const AnimatedHeader = ({animationRange}) => 
-    <View style={styles.container}> 
-        <HeaderBackground animationRange={animationRange} />       
+    <View style={styles.container} pointerEvents="none"> 
+        <HeaderBackground animationRange={animationRange} />
+        <Animated.View style={styles.container} pointerEvents="none">       
+            <AnimatedText animationRange={animationRange}/>
+            <AnimatedImage animationRange={animationRange}/>
+        </Animated.View>       
     </View>
 
 const styles = StyleSheet.create({
     container: {
         position: 'absolute', 
         flex: 0, 
-        zIndex: 10, 
-        height:172, 
+        zIndex: 2, 
+        height:200, 
         width:'100%', 
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+
+        justifyContent: 'center',
+        alignItems: 'center'
      },
     headerBackground: {
         position: 'absolute',
         flex: 0,        
-        height: 172,
+        height: 200,
         width: '100%',
-        backgroundColor: 'red',
+        backgroundColor: 'white',
         zIndex: 2,
     }
 });
