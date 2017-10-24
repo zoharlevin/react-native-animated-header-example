@@ -18,7 +18,7 @@ const getColorStyle =(numberOfItem) => {
 
 const ItemInScroll = ({numberOfItem}) =>
     <View style={[getColorStyle(numberOfItem), styles.container]}>
-        <Text style={styles.item}>{'This is item #' + numberOfItem}</Text>
+        <Text style={styles.item}>{'Item #' + numberOfItem}</Text>
     </View>
 
 const styles = StyleSheet.create({
