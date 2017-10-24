@@ -13,9 +13,12 @@ const AnimatedImage = ({
     elementHeight,
     elementWidth,}) => {
 
-        const animateImage = buildTransform(animationRange, elementX, elementY, elementHeight, elementWidth, -130, -50, 0.5);        
+        const animateImage = buildTransform(animationRange, elementX, elementY, elementHeight, elementWidth, 20, 40, 0.5);        
         return (
-            <Animated.Image source={require('./img/dog.png')} style={[styles.image, animateImage]} />                
+            <Animated.Image 
+                source={require('./img/dog.png')} 
+                style={[styles.image, animateImage]} 
+                onLayout={event => onLayoutSetMeasurements(event)} />                
         )        
 }
 

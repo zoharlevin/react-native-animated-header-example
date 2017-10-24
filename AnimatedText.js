@@ -13,7 +13,7 @@ const AnimatedText = ({
     elementHeight,
     elementWidth,}) => {
 
-        const animateText = buildTransform(animationRange, elementX, elementY, elementHeight, elementWidth, -80, -20, 0.7);
+        const animateText = buildTransform(animationRange, elementX, elementY, elementHeight, elementWidth, 20, 70, 0.7);
         const animateOpacity = {
             opacity: animationRange.interpolate({
                 inputRange: [0, 0.9, 1],
@@ -22,7 +22,9 @@ const AnimatedText = ({
         };
 
         return (
-            <Animated.Text style={[styles.text, animateText, animateOpacity]}>
+            <Animated.Text 
+                style={[styles.text, animateText, animateOpacity]}
+                onLayout={event => onLayoutSetMeasurements(event)} >
                 This is Animated Text
             </Animated.Text>
         )        
